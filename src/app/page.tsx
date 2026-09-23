@@ -40,7 +40,7 @@ export default function Home() {
 
       const observerOptions: IntersectionObserverInit = {
         root: null,
-        rootMargin: '0px 0px -15% 0px', // 下部15%〜30%付近で確実に検出
+        rootMargin: '0px 0px -15% 0px',
         threshold: 0.05,
       };
 
@@ -52,7 +52,6 @@ export default function Home() {
       });
     };
 
-    // オープニング(3秒)の終了を待ってからスクロール監視を開始
     const timer = setTimeout(() => {
       startObserver();
     }, 3000);
@@ -103,10 +102,17 @@ export default function Home() {
             />
           </section>
 
-          {/* Instagramセクション */}
+          {/* Instagramセクション（タイトルリンク付き） */}
           <section className="pt-12 border-t border-rose-900/30 fade-in-section">
-            <h2 className="text-center font-serif text-amber-200/80 tracking-widest text-lg md:text-xl mb-10">
-              INSTAGRAM
+            <h2 className="text-center mb-10">
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block font-serif text-amber-200/80 hover:text-amber-100 tracking-widest text-lg md:text-xl transition-all duration-300 transform hover:scale-105"
+              >
+                INSTAGRAM
+              </a>
             </h2>
             <InstagramFeed />
           </section>
@@ -140,7 +146,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* 3. FOOTER セクション（アニメーション対象外） */}
+          {/* 3. FOOTER セクション */}
           <Footer instagramUrl={instagramUrl} />
 
         </div>
