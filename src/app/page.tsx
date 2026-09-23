@@ -69,10 +69,7 @@ export default function Home() {
       {/* 0. ローディング（オープニング）画面 */}
       <LoadingScreen />
       
-      {/* 
-        画面左右・上下を黒ワインレッド(#120307)へ落とし込むグラデーションオーバーレイ
-        ※ SPでは透明度・範囲を緩やかに（opacity-60 md:opacity-100）設定
-      */}
+      {/* 画面左右・上下を黒ワインレッド(#120307)へ落とし込むグラデーションオーバーレイ */}
       <div 
         className="fixed inset-0 pointer-events-none z-30 opacity-60 md:opacity-100 transition-opacity duration-300"
         style={{
@@ -83,12 +80,33 @@ export default function Home() {
         }}
       />
 
-      {/* 1. ヒーロー（スライダー）セクション */}
+      {/* 
+        1. ヒーロー（スライダー）セクション
+        - sticky top-0 固定
+        - スタンダードなモダンPC幅 max-w-[1400px] mx-auto で中央寄せ
+      */}
       <div className="sticky top-0 z-0 w-full bg-[#120307] overflow-hidden">
-        <HeroSlider />
+        <div className="max-w-[1400px] mx-auto w-full relative">
+          
+          {/* スライダー本体 */}
+          <HeroSlider />
+
+          {/* 境界線を背景となじませるフェードオーバーレイ */}
+          <div 
+            className="absolute inset-0 pointer-events-none z-10"
+            style={{
+              boxShadow: 'inset 0 0 50px 15px #120307',
+              background: `
+                linear-gradient(to right, #120307 0%, transparent 4%, transparent 96%, #120307 100%),
+                linear-gradient(to bottom, #120307 0%, transparent 3%, transparent 94%, #120307 100%)
+              `
+            }}
+          />
+
+        </div>
       </div>
 
-      {/* 2. メインコンテンツ */}
+      {/* 2. メインコンテンツ（スライダーの上へ滑らかに競り上がる） */}
       <main className="relative z-10 bg-[#2E0812] rounded-t-[36px] md:rounded-t-[56px] shadow-[0_-30px_60px_rgba(18,3,7,0.95)] border-t border-rose-900/30">
         
         {/* 上端のグラデーションフェード */}
