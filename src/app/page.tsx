@@ -69,13 +69,16 @@ export default function Home() {
       {/* 0. ローディング（オープニング）画面 */}
       <LoadingScreen />
       
-      {/* 画面左右・上下を黒ワインレッド(#120307)へ落とし込むグラデーションオーバーレイ */}
+      {/* 
+        画面左右・上下を黒ワインレッド(#120307)へ落とし込むグラデーションオーバーレイ
+        ※ SPでは透明度・範囲を緩やかに（opacity-60 md:opacity-100）設定
+      */}
       <div 
-        className="fixed inset-0 pointer-events-none z-30"
+        className="fixed inset-0 pointer-events-none z-30 opacity-60 md:opacity-100 transition-opacity duration-300"
         style={{
           background: `
-            radial-gradient(circle at center, transparent 30%, #120307 95%),
-            linear-gradient(to right, #120307 0%, transparent 15%, transparent 85%, #120307 100%)
+            radial-gradient(circle at center, transparent 50%, #120307 98%),
+            linear-gradient(to right, #120307 0%, transparent 8%, transparent 92%, #120307 100%)
           `
         }}
       />
@@ -89,7 +92,7 @@ export default function Home() {
       <main className="relative z-10 bg-[#2E0812] rounded-t-[36px] md:rounded-t-[56px] shadow-[0_-30px_60px_rgba(18,3,7,0.95)] border-t border-rose-900/30">
         
         {/* 上端のグラデーションフェード */}
-        <div className="w-full h-10 md:h-14 bg-gradient-to-b from-[#120307]/70 to-transparent rounded-t-[36px] md:rounded-t-[56px] pointer-events-none" />
+        <div className="w-full h-10 md:h-14 bg-gradient-to-b from-[#120307]/50 md:from-[#120307]/70 to-transparent rounded-t-[36px] md:rounded-t-[56px] pointer-events-none" />
 
         <div className="px-6 max-w-4xl mx-auto space-y-16 md:space-y-24 pb-12 md:pb-16">
           
