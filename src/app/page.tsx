@@ -23,6 +23,7 @@ export default function Home() {
   const address = "宮城県仙台市青葉区一番町4丁目2-20 ブラザービル";
   const googleMapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   const instagramUrl = "https://www.instagram.com/le_petale.vinylonly/";
+  const phoneNumber = "02230024963";
 
   // オープニングアニメーション終了後（3秒後）にIntersectionObserverを開始する
   useEffect(() => {
@@ -65,7 +66,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#2E0812] text-slate-100">
+    <div className="min-h-screen bg-[#2E0812] text-slate-100 relative">
       {/* 0. ローディング（オープニング）画面 */}
       <LoadingScreen />
       
@@ -80,11 +81,24 @@ export default function Home() {
         }}
       />
 
-      {/* 
-        1. ヒーロー（スライダー）セクション
-        - sticky top-0 固定
-        - スタンダードなモダンPC幅 max-w-[1400px] mx-auto で中央寄せ
-      */}
+      {/* 画面右下固定：電話発信ボタン（SP版のみ表示：md:hidden） */}
+      <div className="fixed bottom-6 right-6 z-40 md:hidden">
+        <a
+          href={`tel:${phoneNumber}`}
+          aria-label="店舗へ電話をかける"
+          className="flex items-center justify-center w-12 h-12 rounded-full bg-[#2E0812]/90 border border-amber-200/40 text-amber-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md active:scale-95 transition-all duration-300"
+        >
+          {/* 電話アイコン（SVG） */}
+          <svg
+            className="w-5 h-5 fill-current"
+            viewBox="0 0 24 24"
+          >
+            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+        </a>
+      </div>
+
+      {/* 1. ヒーロー（スライダー）セクション */}
       <div className="sticky top-0 z-0 w-full bg-[#120307] overflow-hidden">
         <div className="max-w-[1400px] mx-auto w-full relative">
           
@@ -106,7 +120,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. メインコンテンツ（スライダーの上へ滑らかに競り上がる） */}
+      {/* 2. メインコンテンツ */}
       <main className="relative z-10 bg-[#2E0812] rounded-t-[36px] md:rounded-t-[56px] shadow-[0_-30px_60px_rgba(18,3,7,0.95)] border-t border-rose-900/30">
         
         {/* 上端のグラデーションフェード */}
@@ -123,7 +137,7 @@ export default function Home() {
             />
           </section>
 
-          {/* Instagramセクション（タイトルリンク付き） */}
+          {/* Instagramセクション */}
           <section className="pt-12 border-t border-rose-900/30 fade-in-section">
             <h2 className="text-center mb-10">
               <a
