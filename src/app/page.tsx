@@ -23,7 +23,7 @@ export default function Home() {
   const address = "宮城県仙台市青葉区一番町4丁目2-20 ブラザービル";
   const googleMapUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
   const instagramUrl = "https://www.instagram.com/le_petale.vinylonly/";
-  const phoneNumber = "02230024963";
+  const phoneNumber = "0223024963";
 
   // オープニングアニメーション終了後（3秒後）にIntersectionObserverを開始する
   useEffect(() => {
